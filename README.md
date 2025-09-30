@@ -61,3 +61,55 @@ Soluzione:
     };
 ```
 File: src/pages/Login.tsx
+
+
+### Esercizio 4 – NavLink
+**Obiettivo**: Creare una navbar con link che si evidenziano quando sono attivi.
+
+Soluzione:
+
+```typescript
+<NavLink 
+  to="/merch" 
+  className={({ isActive }) => 
+    isActive ? "nav-link active" : "nav-link"
+  }
+>
+  Merch
+</NavLink>
+```
+File: src/components/Navbar.tsx
+
+### Esercizio 5 – Organizzazione Router
+**Obiettivo**: Spostare la definizione delle rotte in un file separato AppRouter.jsx.
+
+Soluzione:
+
+```typescript
+// AppRouter.tsx - Contiene tutte le rotte
+export default function AppRouter() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
+      {/* ... altre rotte */}
+    </Routes>
+  );
+}
+
+// App.tsx - Importa e usa AppRouter
+import AppRouter from './AppRouter';
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <AppRouter />
+      </main>
+    </>
+  );
+}
+```
+File: src/AppRouter.tsx e src/App.tsx
+
