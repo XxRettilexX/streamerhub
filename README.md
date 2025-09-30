@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# StreamerHub - Progetto React TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un'applicazione e-commerce per streamer e creator, sviluppata con React, TypeScript e React Router.
 
-Currently, two official plugins are available:
+## 🚀 Funzionalità
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Navigazione SPA** con React Router
+- **Rotte protette** per aree autenticate
+- **Rotte dinamiche** per dettagli prodotti
+- **Gestione stato** con useState e useEffect
+- **Design responsive** con CSS Grid e Flexbox
+- **TypeScript** per type safety
 
-## React Compiler
+## 📋 Esercizi Risolti
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Esercizio 1 – Rotta dinamica
+  **Obiettivo**: Creare una rotta `/product/:id` che visualizzi l'ID del prodotto dall'URL.
 
-## Expanding the ESLint configuration
+  **Soluzione**:
+  ```typescript
+  // In AppRouter.tsx
+  <Route path="/product/:id" element={<ProductDetail />} />
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  // In ProductDetail.tsx
+  const { id } = useParams<{ id: string }>();
+  console.log("Product ID from URL:", id);
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Esercizio 2 – useParams con fetch
+**Obbiettivo**: Estendere l'esercizio 1 facendo una fetch a FakeStoreAPI per ottenere i dettagli del prodotto.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Soluzione:
+  ```typescript
+  useEffect(() => {
+  const fetchProduct = async () => {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const data: Product = await response.json();
+    setProduct(data);
+  };
+  
+    if (id) fetchProduct();
+  }, [id, navigate]);
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+File: src/pages/ProductDetail.tsx
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Esercizio 3 – useNavigate
+**Obiettivo**: Creare un form di login che reindirizza a /profile dopo l'autenticazione.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Soluzione:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```typescript
+    const navigate = useNavigate();
+
+    const handleSubmit = (e: FormEvent) => {
+      e.preventDefault();
+      if (username.trim()) {
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/profile');
+      }
+    };
+
+File: src/pages/Login.tsx
