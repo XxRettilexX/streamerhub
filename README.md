@@ -18,12 +18,12 @@ Un'applicazione e-commerce per streamer e creator, sviluppata con React, TypeScr
 
   **Soluzione**:
   ```typescript
-  // In AppRouter.tsx
-  <Route path="/product/:id" element={<ProductDetail />} />
+    // In AppRouter.tsx
+    <Route path="/product/:id" element={<ProductDetail />} />
 
-  // In ProductDetail.tsx
-  const { id } = useParams<{ id: string }>();
-  console.log("Product ID from URL:", id);
+    // In ProductDetail.tsx
+    const { id } = useParams<{ id: string }>();
+    console.log("Product ID from URL:", id);
 
 ### Esercizio 2 – useParams con fetch
 **Obbiettivo**: Estendere l'esercizio 1 facendo una fetch a FakeStoreAPI per ottenere i dettagli del prodotto.
