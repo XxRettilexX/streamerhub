@@ -313,3 +313,376 @@ body {
     justify-content: center;
   }
 }
+/* Theme styles */
+body.light {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.dark {
+  background-color: #0f0f23;
+  color: #ffffff;
+}
+
+body.light .page {
+  background-color: #ffffff;
+}
+
+body.dark .page {
+  background-color: #0f0f23;
+}
+
+/* User section styles */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-greeting {
+  color: #4ecdc4;
+  font-weight: 500;
+}
+
+.btn-small {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid #4a5568;
+  color: inherit;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: #4a5568;
+  transform: scale(1.1);
+}
+
+/* Filter styles */
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #1a202c;
+  border-radius: 10px;
+  border: 1px solid #2d3748;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  color: #a0aec0;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.filter-input, .filter-select {
+  padding: 0.75rem;
+  border: 2px solid #2d3748;
+  border-radius: 8px;
+  background: #2d3748;
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.filter-input:focus, .filter-select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+}
+
+.results-count {
+  color: #4ecdc4;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #a0aec0;
+}
+
+.no-results p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Loading and error states */
+.loading, .error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.loading {
+  color: #4ecdc4;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+/* Responsive filters */
+@media (max-width: 768px) {
+  .filters {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .user-section {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Products Context Styles */
+.loading-state, .error-state {
+  text-align: center;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #4a5568;
+  border-left: 4px solid #4ecdc4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-state h2 {
+  color: #ff6b6b;
+  margin-bottom: 0.5rem;
+}
+
+.error-state p {
+  color: #a0aec0;
+  margin-bottom: 1.5rem;
+}
+
+/* Filters Section */
+.filters-section {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #1a202c;
+  border-radius: 10px;
+  border: 1px solid #2d3748;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.search-filter {
+  flex: 1;
+  min-width: 250px;
+}
+
+.category-filter {
+  min-width: 200px;
+}
+
+.search-input, .category-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #2d3748;
+  border-radius: 8px;
+  background: #2d3748;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus, .category-select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.search-input::placeholder {
+  color: #a0aec0;
+}
+
+/* Results Info */
+.results-info {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #2d3748;
+  border-radius: 8px;
+  border-left: 4px solid #4ecdc4;
+}
+
+.results-info p {
+  color: #a0aec0;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Product Detail Enhancements */
+.product-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.product-image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.product-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category-badge {
+  background: #4ecdc4;
+  color: #1a202c;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.rating {
+  color: #ffd93d;
+  font-weight: 500;
+}
+
+.product-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+/* No Products State */
+.no-products {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #a0aec0;
+}
+
+.no-products h3 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+/* Product Link */
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.product-link:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .filters-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-filter, .category-filter {
+    min-width: auto;
+  }
+  
+  .product-detail-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .product-actions {
+    flex-direction: column;
+  }
+  
+  .btn-large {
+    flex: none;
+  }
+  
+  .product-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* Light theme adjustments */
+body.light .filters-section,
+body.light .results-info {
+  background: #f7fafc;
+  border-color: #e2e8f0;
+}
+
+body.light .search-input,
+body.light .category-select {
+  background: white;
+  border-color: #e2e8f0;
+  color: #2d3748;
+}
+
+body.light .search-input:focus,
+body.light .category-select:focus {
+  border-color: #ff6b6b;
+}
+
+body.light .results-info {
+  background: #edf2f7;
+  border-left-color: #4ecdc4;
+}
+
+body.light .results-info p {
+  color: #4a5568;
+}

@@ -1,10 +1,11 @@
 import { Navigate } from "react-router-dom";
-import type { PrivateRouteProps } from "../types";
+import { useUser } from "../contexts/UserContext";
+import { type PrivateRouteProps } from "../types";
 
 function PrivateRoute({ children }: PrivateRouteProps) {
-    const isAuth = localStorage.getItem('isLoggedIn') === 'true';
+  const { user } = useUser();
 
-    return isAuth ? <>{children}</> : <Navigate to="/login" />;
+  return user?.loggedIn ? <>{children}</> : <Navigate to="/login" />;
 }
 
 export default PrivateRoute;

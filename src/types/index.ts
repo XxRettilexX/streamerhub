@@ -13,6 +13,7 @@ export interface Product {
     };
 }
 
+
 export interface Stream {
     id: number;
     title: string;
@@ -34,4 +35,8 @@ export interface ProductCardProps {
 
 export interface PrivateRouteProps {
     children: ReactNode;
+}
+// Context types
+export interface PrivateRouteProps {
+    children: React.ReactNode;
 }
