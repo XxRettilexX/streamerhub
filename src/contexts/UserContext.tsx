@@ -16,7 +16,6 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
-  // Carica lo stato del login dal localStorage all'avvio
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
